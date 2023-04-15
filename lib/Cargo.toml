@@ -1,5 +1,7 @@
 [package]
 name = "gitea-rs"
+description = "Gitea API client"
+license = "MIT"
 version = "1.19.0"
 authors = ["OpenAPI Generator team and contributors"]
 edition = "2018"
