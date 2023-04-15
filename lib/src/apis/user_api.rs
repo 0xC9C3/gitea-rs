@@ -436,10 +436,15 @@ pub async fn create_current_user_repo(configuration: &configuration::Configurati
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -449,13 +454,8 @@ pub async fn create_current_user_repo(configuration: &configuration::Configurati
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -515,10 +515,15 @@ pub async fn get_user_settings(configuration: &configuration::Configuration, ) -
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -528,13 +533,8 @@ pub async fn get_user_settings(configuration: &configuration::Configuration, ) -
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -593,10 +593,15 @@ pub async fn get_verification_token(configuration: &configuration::Configuration
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -606,13 +611,8 @@ pub async fn get_verification_token(configuration: &configuration::Configuration
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -671,10 +671,15 @@ pub async fn update_user_settings(configuration: &configuration::Configuration, 
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -684,13 +689,8 @@ pub async fn update_user_settings(configuration: &configuration::Configuration, 
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -750,10 +750,15 @@ pub async fn user_add_email(configuration: &configuration::Configuration, body: 
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -763,13 +768,8 @@ pub async fn user_add_email(configuration: &configuration::Configuration, body: 
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -829,10 +829,15 @@ pub async fn user_check_following(configuration: &configuration::Configuration, 
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -842,13 +847,8 @@ pub async fn user_check_following(configuration: &configuration::Configuration, 
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -907,10 +907,15 @@ pub async fn user_create_o_auth2_application(configuration: &configuration::Conf
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -920,13 +925,8 @@ pub async fn user_create_o_auth2_application(configuration: &configuration::Conf
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -986,10 +986,15 @@ pub async fn user_create_token(configuration: &configuration::Configuration, use
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -999,13 +1004,8 @@ pub async fn user_create_token(configuration: &configuration::Configuration, use
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -1065,10 +1065,15 @@ pub async fn user_current_check_following(configuration: &configuration::Configu
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1078,13 +1083,8 @@ pub async fn user_current_check_following(configuration: &configuration::Configu
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1143,10 +1143,15 @@ pub async fn user_current_check_starring(configuration: &configuration::Configur
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1156,13 +1161,8 @@ pub async fn user_current_check_starring(configuration: &configuration::Configur
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1221,10 +1221,15 @@ pub async fn user_current_delete_follow(configuration: &configuration::Configura
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1234,13 +1239,8 @@ pub async fn user_current_delete_follow(configuration: &configuration::Configura
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1299,10 +1299,15 @@ pub async fn user_current_delete_gpg_key(configuration: &configuration::Configur
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1312,13 +1317,8 @@ pub async fn user_current_delete_gpg_key(configuration: &configuration::Configur
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1377,10 +1377,15 @@ pub async fn user_current_delete_key(configuration: &configuration::Configuratio
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1390,13 +1395,8 @@ pub async fn user_current_delete_key(configuration: &configuration::Configuratio
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1455,10 +1455,15 @@ pub async fn user_current_delete_star(configuration: &configuration::Configurati
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1468,13 +1473,8 @@ pub async fn user_current_delete_star(configuration: &configuration::Configurati
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1533,10 +1533,15 @@ pub async fn user_current_get_gpg_key(configuration: &configuration::Configurati
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1546,13 +1551,8 @@ pub async fn user_current_get_gpg_key(configuration: &configuration::Configurati
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1611,10 +1611,15 @@ pub async fn user_current_get_key(configuration: &configuration::Configuration, 
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1624,13 +1629,8 @@ pub async fn user_current_get_key(configuration: &configuration::Configuration, 
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1695,10 +1695,15 @@ pub async fn user_current_list_followers(configuration: &configuration::Configur
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1708,13 +1713,8 @@ pub async fn user_current_list_followers(configuration: &configuration::Configur
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1779,10 +1779,15 @@ pub async fn user_current_list_following(configuration: &configuration::Configur
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1792,13 +1797,8 @@ pub async fn user_current_list_following(configuration: &configuration::Configur
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1863,10 +1863,15 @@ pub async fn user_current_list_gpg_keys(configuration: &configuration::Configura
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1876,13 +1881,8 @@ pub async fn user_current_list_gpg_keys(configuration: &configuration::Configura
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -1950,10 +1950,15 @@ pub async fn user_current_list_keys(configuration: &configuration::Configuration
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -1963,13 +1968,8 @@ pub async fn user_current_list_keys(configuration: &configuration::Configuration
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2034,10 +2034,15 @@ pub async fn user_current_list_repos(configuration: &configuration::Configuratio
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2047,13 +2052,8 @@ pub async fn user_current_list_repos(configuration: &configuration::Configuratio
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2118,10 +2118,15 @@ pub async fn user_current_list_starred(configuration: &configuration::Configurat
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2131,13 +2136,8 @@ pub async fn user_current_list_starred(configuration: &configuration::Configurat
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2202,10 +2202,15 @@ pub async fn user_current_list_subscriptions(configuration: &configuration::Conf
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2215,13 +2220,8 @@ pub async fn user_current_list_subscriptions(configuration: &configuration::Conf
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2280,10 +2280,15 @@ pub async fn user_current_post_gpg_key(configuration: &configuration::Configurat
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2293,13 +2298,8 @@ pub async fn user_current_post_gpg_key(configuration: &configuration::Configurat
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&form);
 
@@ -2359,10 +2359,15 @@ pub async fn user_current_post_key(configuration: &configuration::Configuration,
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2372,13 +2377,8 @@ pub async fn user_current_post_key(configuration: &configuration::Configuration,
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -2438,10 +2438,15 @@ pub async fn user_current_put_follow(configuration: &configuration::Configuratio
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2451,13 +2456,8 @@ pub async fn user_current_put_follow(configuration: &configuration::Configuratio
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2516,10 +2516,15 @@ pub async fn user_current_put_star(configuration: &configuration::Configuration,
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2529,13 +2534,8 @@ pub async fn user_current_put_star(configuration: &configuration::Configuration,
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2606,10 +2606,15 @@ pub async fn user_current_tracked_times(configuration: &configuration::Configura
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2619,13 +2624,8 @@ pub async fn user_current_tracked_times(configuration: &configuration::Configura
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2684,10 +2684,15 @@ pub async fn user_delete_access_token(configuration: &configuration::Configurati
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2697,13 +2702,8 @@ pub async fn user_delete_access_token(configuration: &configuration::Configurati
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2762,10 +2762,15 @@ pub async fn user_delete_email(configuration: &configuration::Configuration, bod
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2775,13 +2780,8 @@ pub async fn user_delete_email(configuration: &configuration::Configuration, bod
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -2841,10 +2841,15 @@ pub async fn user_delete_o_auth2_application(configuration: &configuration::Conf
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2854,13 +2859,8 @@ pub async fn user_delete_o_auth2_application(configuration: &configuration::Conf
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2919,10 +2919,15 @@ pub async fn user_get(configuration: &configuration::Configuration, username: &s
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -2932,13 +2937,8 @@ pub async fn user_get(configuration: &configuration::Configuration, username: &s
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -2997,10 +2997,15 @@ pub async fn user_get_current(configuration: &configuration::Configuration, ) ->
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3010,13 +3015,8 @@ pub async fn user_get_current(configuration: &configuration::Configuration, ) ->
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3075,10 +3075,15 @@ pub async fn user_get_heatmap_data(configuration: &configuration::Configuration,
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3088,13 +3093,8 @@ pub async fn user_get_heatmap_data(configuration: &configuration::Configuration,
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3153,10 +3153,15 @@ pub async fn user_get_o_auth2_application(configuration: &configuration::Configu
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3166,13 +3171,8 @@ pub async fn user_get_o_auth2_application(configuration: &configuration::Configu
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3237,10 +3237,15 @@ pub async fn user_get_oauth2_application(configuration: &configuration::Configur
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3250,13 +3255,8 @@ pub async fn user_get_oauth2_application(configuration: &configuration::Configur
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3321,10 +3321,15 @@ pub async fn user_get_stop_watches(configuration: &configuration::Configuration,
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3334,13 +3339,8 @@ pub async fn user_get_stop_watches(configuration: &configuration::Configuration,
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3405,10 +3405,15 @@ pub async fn user_get_tokens(configuration: &configuration::Configuration, usern
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3418,13 +3423,8 @@ pub async fn user_get_tokens(configuration: &configuration::Configuration, usern
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3483,10 +3483,15 @@ pub async fn user_list_emails(configuration: &configuration::Configuration, ) ->
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3496,13 +3501,8 @@ pub async fn user_list_emails(configuration: &configuration::Configuration, ) ->
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3567,10 +3567,15 @@ pub async fn user_list_followers(configuration: &configuration::Configuration, u
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3580,13 +3585,8 @@ pub async fn user_list_followers(configuration: &configuration::Configuration, u
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3651,10 +3651,15 @@ pub async fn user_list_following(configuration: &configuration::Configuration, u
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3664,13 +3669,8 @@ pub async fn user_list_following(configuration: &configuration::Configuration, u
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3735,10 +3735,15 @@ pub async fn user_list_gpg_keys(configuration: &configuration::Configuration, us
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3748,13 +3753,8 @@ pub async fn user_list_gpg_keys(configuration: &configuration::Configuration, us
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3822,10 +3822,15 @@ pub async fn user_list_keys(configuration: &configuration::Configuration, userna
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3835,13 +3840,8 @@ pub async fn user_list_keys(configuration: &configuration::Configuration, userna
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3906,10 +3906,15 @@ pub async fn user_list_repos(configuration: &configuration::Configuration, usern
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -3919,13 +3924,8 @@ pub async fn user_list_repos(configuration: &configuration::Configuration, usern
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -3990,10 +3990,15 @@ pub async fn user_list_starred(configuration: &configuration::Configuration, use
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4003,13 +4008,8 @@ pub async fn user_list_starred(configuration: &configuration::Configuration, use
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -4074,10 +4074,15 @@ pub async fn user_list_subscriptions(configuration: &configuration::Configuratio
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4087,13 +4092,8 @@ pub async fn user_list_subscriptions(configuration: &configuration::Configuratio
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -4158,10 +4158,15 @@ pub async fn user_list_teams(configuration: &configuration::Configuration, page:
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4171,13 +4176,8 @@ pub async fn user_list_teams(configuration: &configuration::Configuration, page:
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -4248,10 +4248,15 @@ pub async fn user_search(configuration: &configuration::Configuration, q: Option
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4261,13 +4266,8 @@ pub async fn user_search(configuration: &configuration::Configuration, q: Option
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
@@ -4326,10 +4326,15 @@ pub async fn user_update_o_auth2_application(configuration: &configuration::Conf
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4339,13 +4344,8 @@ pub async fn user_update_o_auth2_application(configuration: &configuration::Conf
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
     local_var_req_builder = local_var_req_builder.json(&body);
 
@@ -4405,10 +4405,15 @@ pub async fn user_verify_gpg_key(configuration: &configuration::Configuration, )
             Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
             None => local_var_key,
         };
-        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
+        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
     };
-    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
-        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
+    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
+        let local_var_key = local_var_apikey.key.clone();
+        let local_var_value = match local_var_apikey.prefix {
+            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
+            None => local_var_key,
+        };
+        local_var_req_builder = local_var_req_builder.header("Authorization", local_var_value);
     };
     if let Some(ref local_var_apikey) = local_var_configuration.api_key {
         let local_var_key = local_var_apikey.key.clone();
@@ -4418,13 +4423,8 @@ pub async fn user_verify_gpg_key(configuration: &configuration::Configuration, )
         };
         local_var_req_builder = local_var_req_builder.header("Sudo", local_var_value);
     };
-    if let Some(ref local_var_apikey) = local_var_configuration.api_key {
-        let local_var_key = local_var_apikey.key.clone();
-        let local_var_value = match local_var_apikey.prefix {
-            Some(ref local_var_prefix) => format!("{} {}", local_var_prefix, local_var_key),
-            None => local_var_key,
-        };
-        local_var_req_builder = local_var_req_builder.header("X-GITEA-OTP", local_var_value);
+    if let Some(ref local_var_auth_conf) = local_var_configuration.basic_auth {
+        local_var_req_builder = local_var_req_builder.basic_auth(local_var_auth_conf.0.to_owned(), local_var_auth_conf.1.to_owned());
     };
 
     let local_var_req = local_var_req_builder.build()?;
